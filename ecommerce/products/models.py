@@ -11,6 +11,7 @@ class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image_url = models.TextField(default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL5UMX3Vv8t5CzcGOIhMClknq7AOSttL7yj4RAkYCSAg&s")
 
     def __str__(self):
         return self.name #DEBE SER STRING

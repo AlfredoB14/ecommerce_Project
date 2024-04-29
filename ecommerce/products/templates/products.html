@@ -1,21 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <h1>Products</h1>
+    <nav>
+        <div class="wrapper">
+          <div class="logo"><a href="#">FrodOS Ecommerce</a></div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="">Home</a></li>
+            <li><a href="{%url 'products'%}">Products</a></li>
+            <li><a href="{%url 'categories'%}">Categories</a></li>
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
 
     <!--TODO: MOSTRAR TODOS LOS PRODUCTOS-->
     <ul>
 
         {% for product in products %}
-            <li>
-                {{product.name}} - ${{product.price}}
-
-            </li>
+        <div class="container page-wrapper">
+            <div class="page-inner">
+              <div class="row">
+                <div class="el-wrapper">
+                  <div class="box-up">
+                    <img class="img_prod" src={{product.image_url}} alt="">
+                    <div class="img-info">
+                      <div class="info-inner">
+                        <span class="p-name">{{product.name}}</span>
+                        <span class="p-company">{{product.description}}</span>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="box-down">
+                    <div class="h-bg">
+                      <div class="h-bg-inner"></div>
+                    </div>
+          
+                    <a class="cart" href="#">
+                      <span class="price">${{product.price}}</span>
+                      <span class="add-to-cart">
+                        <span class="txt">Add in cart</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         {% endfor %}
 
     </ul>
